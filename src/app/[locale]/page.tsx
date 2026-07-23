@@ -5,6 +5,7 @@ import Hero from '@/components/Hero'
 import Problem from '@/components/Problem'
 import Solution from '@/components/Solution'
 import SalonFeatures from '@/components/SalonFeatures'
+import Screenshots from '@/components/Screenshots'
 import AIVision from '@/components/AIVision'
 import Competitive from '@/components/Competitive'
 import Contact from '@/components/Contact'
@@ -25,6 +26,7 @@ export default function Home({ params }: Props) {
       <Solution />
       <Problem />
       <SalonFeatures />
+      <Screenshots />
       <AIVision />
       <Competitive />
       <Contact />

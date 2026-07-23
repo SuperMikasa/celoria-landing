@@ -51,7 +51,7 @@ export default function Screenshots() {
   }, [])
 
   return (
-    <section aria-label="Product screenshots" className="space-y-6">
+    <section id="screenshots" aria-label="Product screenshots" className="space-y-6">
       <div className="flex flex-wrap gap-2">
         {slides.map((slide, index) => (
           <button
