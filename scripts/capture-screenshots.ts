@@ -9,20 +9,20 @@
  * npx playwright test scripts/capture-screenshots.ts
  */
 
-import { test, expect, Page } from '@playwright/test'
+import { test, Page } from '@playwright/test'
 import path from 'path'
 import fs from 'fs'
 
 // 截图配置
 const BASE_URL = 'http://localhost:3001'
 const OUTPUT_DIR = path.join(__dirname, '../public/docs/images')
-const TENANT = 'qqnails' // 测试租户
+const TENANT = 'bloomnail' // 测试租户
 
 // 测试账号
 const TEST_ACCOUNTS = {
-  admin: { email: 'test.admin@qqnails.com', password: 'test123' },
-  manager: { email: 'test.manager@qqnails.com', password: 'test123' },
-  employee: { email: 'test.employee@qqnails.com', password: 'test123' },
+  admin: { email: 'test.admin@bloomnail.com', password: 'test123' },
+  manager: { email: 'test.manager@bloomnail.com', password: 'test123' },
+  employee: { email: 'test.employee@bloomnail.com', password: 'test123' },
 }
 
 // 截图任务列表
@@ -42,20 +42,20 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'login-page',
     category: 'getting-started',
-    url: '/en/qqnails/login',
+    url: '/en/bloomnail/login',
     selector: 'main',
   },
   {
     name: 'dashboard',
     category: 'getting-started',
-    url: '/en/qqnails/admin/dashboard',
+    url: '/en/bloomnail/admin/dashboard',
     selector: 'main',
     account: 'admin',
   },
   {
     name: 'sidebar-navigation',
     category: 'getting-started',
-    url: '/en/qqnails/admin/dashboard',
+    url: '/en/bloomnail/admin/dashboard',
     selector: '[data-testid="sidebar"], nav',
     account: 'admin',
   },
@@ -64,14 +64,14 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'store-list',
     category: 'admin',
-    url: '/en/qqnails/stores',
+    url: '/en/bloomnail/stores',
     selector: 'main',
     account: 'admin',
   },
   {
     name: 'store-detail',
     category: 'admin',
-    url: '/en/qqnails/stores/1',
+    url: '/en/bloomnail/stores/1',
     selector: 'main',
     account: 'admin',
   },
@@ -80,14 +80,14 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'employee-list',
     category: 'admin',
-    url: '/en/qqnails/employees',
+    url: '/en/bloomnail/employees',
     selector: 'main',
     account: 'admin',
   },
   {
     name: 'employee-detail',
     category: 'admin',
-    url: '/en/qqnails/employees/1',
+    url: '/en/bloomnail/employees/1',
     selector: 'main',
     account: 'admin',
   },
@@ -96,7 +96,7 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'service-list',
     category: 'admin',
-    url: '/en/qqnails/services',
+    url: '/en/bloomnail/services',
     selector: 'main',
     account: 'admin',
   },
@@ -105,14 +105,14 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'roles-list',
     category: 'admin',
-    url: '/en/qqnails/admin/permissions/roles',
+    url: '/en/bloomnail/admin/permissions/roles',
     selector: 'main',
     account: 'admin',
   },
   {
     name: 'job-titles',
     category: 'admin',
-    url: '/en/qqnails/admin/permissions/job-titles',
+    url: '/en/bloomnail/admin/permissions/job-titles',
     selector: 'main',
     account: 'admin',
   },
@@ -121,14 +121,14 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'email-templates',
     category: 'admin',
-    url: '/en/qqnails/admin/marketing/promotion/email-templates',
+    url: '/en/bloomnail/admin/marketing/promotion/email-templates',
     selector: 'main',
     account: 'admin',
   },
   {
     name: 'sms-templates',
     category: 'admin',
-    url: '/en/qqnails/admin/marketing/promotion/sms-templates',
+    url: '/en/bloomnail/admin/marketing/promotion/sms-templates',
     selector: 'main',
     account: 'admin',
   },
@@ -137,14 +137,14 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'sales-report',
     category: 'admin',
-    url: '/en/qqnails/reports/sales',
+    url: '/en/bloomnail/reports/sales',
     selector: 'main',
     account: 'admin',
   },
   {
     name: 'profit-report',
     category: 'admin',
-    url: '/en/qqnails/reports/profit',
+    url: '/en/bloomnail/reports/profit',
     selector: 'main',
     account: 'admin',
   },
@@ -153,7 +153,7 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'schedule-list',
     category: 'manager',
-    url: '/en/qqnails/employees/schedules',
+    url: '/en/bloomnail/employees/schedules',
     selector: 'main',
     account: 'manager',
   },
@@ -162,7 +162,7 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'day-end-closeout',
     category: 'manager',
-    url: '/en/qqnails/admin/day-end-closeout',
+    url: '/en/bloomnail/admin/day-end-closeout',
     selector: 'main',
     account: 'manager',
   },
@@ -171,7 +171,7 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'time-clock',
     category: 'employee',
-    url: '/en/qqnails/employees/time-clock',
+    url: '/en/bloomnail/employees/time-clock',
     selector: 'main',
     account: 'employee',
   },
@@ -180,14 +180,14 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'appointment-board',
     category: 'employee',
-    url: '/en/qqnails/appointments/board',
+    url: '/en/bloomnail/appointments/board',
     selector: 'main',
     account: 'employee',
   },
   {
     name: 'appointment-realtime',
     category: 'employee',
-    url: '/en/qqnails/appointments/realtime',
+    url: '/en/bloomnail/appointments/realtime',
     selector: 'main',
     account: 'employee',
   },
@@ -196,7 +196,7 @@ const screenshotTasks: ScreenshotTask[] = [
   {
     name: 'checkout-page',
     category: 'employee',
-    url: '/en/qqnails/checkout',
+    url: '/en/bloomnail/checkout',
     selector: 'main',
     account: 'employee',
   },
@@ -315,7 +315,7 @@ async function runStandalone() {
   })
 
   let currentAccount: string | null = null
-  let page = await context.newPage()
+  const page = await context.newPage()
 
   for (const task of screenshotTasks) {
     try {
